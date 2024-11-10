@@ -67,7 +67,7 @@
 
         esc {
             bindings = <&kp ESCAPE>;
-            key-positions = <1 2>;
+            key-positions = <1 0>;
         };
 
         left_bkt {
@@ -120,10 +120,10 @@
             //                                                      enter
 
             bindings = <
-&kp TAB     &kp SEMI      &kp COMMA   &kp DOT     &kp P        &kp Y        &kp UP_ARROW     &kp F      &kp G        &kp C          &kp R       &kp L        &kp BSPC
-&kp LCTRL   &hm LSHIFT A  &hm LALT O  &hm LGUI E  &hm LCTRL U  &kp I        &kp DOWN_ARROW   &kp D      &hm RCTRL H  &hm RGUI T     &hm RALT N  &hm RSHFT S  &kp ENTER
-&kp LSHIFT  &kp SQT       &kp Q       &kp J       &kp K        &kp X        &kp LEFT_ARROW   &kp B      &kp M        &kp W          &kp V       &kp Z        &kp ESC
-                          &kp K_MUTE  &kp LGUI    &mo 1        &kp SPACE    &kp RIGHT_ARROW  &kp ENTER  &mo 2        &kp BACKSPACE
+&kp TAB     &kp SEMI     &kp COMMA   &kp DOT     &kp P         &kp Y        &kp UP_ARROW     &kp F      &kp G        &kp C          &kp R       &kp L        &kp BSPC
+&kp LCTRL   &hm LCTRL A  &hm LALT O  &hm LGUI E  &hm LSHIFT U  &kp I        &kp DOWN_ARROW   &kp D      &hm RSHFT H  &hm RGUI T     &hm RALT N  &hm RCTRL S  &kp ENTER
+&kp LSHIFT  &kp SQT      &kp Q       &kp J       &kp K         &kp X        &kp LEFT_ARROW   &kp B      &kp M        &kp W          &kp V       &kp Z        &kp ESC
+                         &kp K_MUTE  &kp LGUI    &mo 1         &kp SPACE    &kp RIGHT_ARROW  &kp ENTER  &mo 2        &kp BACKSPACE
                                                                             &kp ENTER
             >;
 
