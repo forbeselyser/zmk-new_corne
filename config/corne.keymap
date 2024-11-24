@@ -66,7 +66,7 @@
 
         esc {
             bindings = <&kp ESCAPE>;
-            key-positions = <1 0>;
+            key-positions = <1 2>;
         };
     };
 
@@ -87,11 +87,25 @@
 &kp TAB    &kp SEMI     &kp COMMA   &kp DOT     &kp P         &kp Y        &kp UP_ARROW     &kp F      &kp G        &kp C       &kp R       &kp L        &kp BSPC
 &kp LCTRL  &hm LCTRL A  &hm LALT O  &hm LGUI E  &hm LSHIFT U  &kp I        &kp DOWN_ARROW   &kp D      &hm RSHFT H  &hm RGUI T  &hm RALT N  &hm RCTRL S  &kp MINUS
 &td0       &kp SQT      &kp Q       &kp J       &kp K         &kp X        &kp LEFT_ARROW   &kp B      &kp M        &kp W       &kp V       &kp Z        &kp RSHIFT
-                        &kp C_MUTE  &kp LGUI    &mo 2         &kp SPACE    &kp RIGHT_ARROW  &kp ENTER  &mo 1        &kp RALT
+                        &kp C_MUTE  &kp LGUI    &mo 3         &kp SPACE    &kp RIGHT_ARROW  &kp ENTER  &mo 2        &kp RALT
                                                                            &kp ENTER
             >;
 
             label = "DVRK";
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        QWERTY {
+            display-name = "QWERTY";
+            bindings = <
+&trans  &kp Q  &kp W       &kp E     &kp R  &kp T        &trans  &kp Y      &kp U  &kp I      &kp O    &kp P     &trans
+&trans  &kp A  &kp S       &kp D     &kp F  &kp G        &trans  &kp H      &kp J  &kp K      &kp L    &kp SEMI  &trans
+&trans  &kp Z  &kp X       &kp C     &kp V  &kp B        &trans  &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans
+               &kp C_MUTE  &kp LGUI  &mo 3  &kp SPACE    &trans  &kp ENTER  &mo 2  &kp RALT
+                                                         &trans
+            >;
+
+            label = "QWERTY";
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
@@ -126,29 +140,15 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TILDE  &kp PLUS         &kp LBKT   &kp LBRC  &kp LPAR     &kp AMPS    &mmv MOVE_UP     &kp EQUAL  &kp RPAR      &kp RBRC  &kp RBKT      &kp SLASH   &trans
-&trans     &kp EXCLAMATION  &kp GRAVE  &kp HASH  &kp PERCENT  &kp PIPE    &mmv MOVE_DOWN   &kp PIPE   &kp CARET     &kp AT    &kp ASTERISK  &kp DOLLAR  &kp MINUS
-&trans     &trans           &trans     &none     &trans       &trans      &mmv MOVE_LEFT   &kp GRAVE  &kp QUESTION  &trans    &trans        &kp BSLH    &trans
-                            &trans     &trans    &trans       &trans      &mmv MOVE_RIGHT  &trans     &trans        &trans
-                                                                          &mkp LCLK
+&kp TILDE  &kp PLUS         &kp LBKT  &kp LBRC  &kp LPAR     &kp AMPS    &mmv MOVE_UP     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH       &trans
+&trans     &kp EXCLAMATION  &kp AT    &kp HASH  &kp PERCENT  &kp PIPE    &mmv MOVE_DOWN   &kp PIPE   &kp CARET     &kp GRAVE  &kp ASTERISK  &kp DOLLAR      &kp MINUS
+&trans     &trans           &trans    &none     &trans       &trans      &mmv MOVE_LEFT   &trans     &kp QUESTION  &trans     &kp BSLH      &kp UNDERSCORE  &trans
+                            &trans    &trans    &trans       &trans      &mmv MOVE_RIGHT  &trans     &trans        &trans
+                                                                         &mkp LCLK
             >;
 
             label = "SYM";
             sensor-bindings = <&scroll_encoder>;
-        };
-
-        QWERTY {
-            display-name = "QWERTY";
-            bindings = <
-&trans  &kp Q  &kp W       &kp E     &kp R  &kp T        &trans  &kp Y      &kp U  &kp I      &kp O    &kp P     &trans
-&trans  &kp A  &kp S       &kp D     &kp F  &kp G        &trans  &kp H      &kp J  &kp K      &kp L    &kp SEMI  &trans
-&trans  &kp Z  &kp X       &kp C     &kp V  &kp B        &trans  &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans
-               &kp C_MUTE  &kp LGUI  &mo 2  &kp SPACE    &trans  &kp ENTER  &mo 1  &kp RALT
-                                                         &trans
-            >;
-
-            label = "QWERTY";
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
         FUNCTION {
@@ -156,7 +156,7 @@
             bindings = <
 &sys_reset                            &kp F1   &kp F2      &kp F3        &kp F4  &kp F5         &mmv MOVE_UP     &none        &kp C_PLAY_PAUSE  &kp C_PREVIOUS        &kp C_NEXT    &none         &sys_reset
 &kp LCTRL                             &kp F6   &kp F7      &kp F8        &kp F9  &kp F10        &mmv MOVE_DOWN   &none        &bt BT_SEL 0      &bt BT_SEL 1          &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp F11  &kp F12     &none         &tog 3  &bootloader    &mmv MOVE_LEFT   &bootloader  &kp C_BRI_DEC     &kp C_BRIGHTNESS_INC  &none         &none         &tog 5
+&kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp F11  &kp F12     &none         &tog 1  &bootloader    &mmv MOVE_LEFT   &bootloader  &kp C_BRI_DEC     &kp C_BRIGHTNESS_INC  &none         &none         &tog 5
                                                &kp C_MUTE  &kp LEFT_GUI  &none   &none          &mmv MOVE_RIGHT  &none        &none             &kp RALT
                                                                                                 &mkp LCLK
             >;
@@ -169,10 +169,10 @@
             label = "SYS";
             display-name = "SYS";
             bindings = <
-&trans  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &none     &mmv MOVE_UP     &bt BT_CLR_ALL  &none  &none   &none  &none  &bt BT_CLR
+&trans  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &none     &mmv MOVE_UP     &none           &none  &none   &none  &none  &bt BT_CLR
 &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_EFR  &rgb_ug RGB_EFF  &none     &mmv MOVE_DOWN   &none           &none  &none   &none  &none  &none
-&none   &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &none            &none            &none     &mmv MOVE_LEFT   &none           &none  &none   &none  &to 0  &none
-                         &rgb_ug RGB_TOG  &trans           &mo 2            &trans    &mmv MOVE_RIGHT  &trans          &mo 1  &trans
+&none   &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &none            &none            &none     &mmv MOVE_LEFT   &bt BT_CLR_ALL  &none  &none   &none  &to 0  &none
+                         &rgb_ug RGB_TOG  &trans           &mo 3            &trans    &mmv MOVE_RIGHT  &trans          &mo 2  &trans
                                                                                       &mkp LCLK
             >;
 
@@ -184,7 +184,7 @@
         compatible = "zmk,conditional-layers";
 
         layer3 {
-            if-layers = <1 2>;
+            if-layers = <2 3>;
             then-layer = <4>;
         };
     };
