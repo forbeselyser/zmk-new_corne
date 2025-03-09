@@ -39,6 +39,13 @@
 #define KEYS_R 7 8 9 10 11 12 22 23 24 25 26 27 36 37 38 39 40 41
 #define THUMBS 42 43 44 45 46 47
 
+#define DVRK 0
+#define QWERTY 1
+#define NUM 2
+#define SYM 3
+#define FN 4
+#define SYS 5
+
 / {
     behaviors {
         td0: td0 {
@@ -50,7 +57,6 @@
 
         hml: hml {
             compatible = "zmk,behavior-hold-tap";
-
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
@@ -63,7 +69,6 @@
 
         hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
-
             flavor = "balanced";
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
@@ -79,8 +84,8 @@
         compatible = "zmk,conditional-layers";
 
         FN_LAYER {
-            if-layers = <2 3>;
-            then-layer = <4>;
+            if-layers = <NUM SYM>;
+            then-layer = <FN>;
         };
     };
 
@@ -115,7 +120,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F  &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D  &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp RSHIFT
-                            &kp LGUI    &mo 3       &kp SPACE                                                                &kp ENTER  &mo 2   &kp RALT
+                            &kp LGUI    &mo SYM     &kp SPACE                                                                &kp ENTER  &mo NUM   &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -126,7 +131,7 @@
 &trans  &kp Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &trans
 &trans  &kp A  &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &trans
 &trans  &kp Z  &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans
-        &kp LGUI    &mo 3       &kp SPACE                                                                &kp ENTER  &mo 2   &kp RALT
+        &kp LGUI    &mo SYM       &kp SPACE                                                                &kp ENTER  &mo NUM   &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -158,7 +163,7 @@
             bindings = <
 &sys_reset                            &kp F1   &kp F2      &kp F3        &kp F4  &kp F5                                &mmv MOVE_UP                     &none        &kp C_PLAY_PAUSE  &kp C_PREVIOUS        &kp C_NEXT    &none         &sys_reset
 &kp LCTRL                             &kp F6   &kp F7      &kp F8        &kp F9  &kp F10               &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &none        &bt BT_SEL 0      &bt BT_SEL 1          &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp F11  &kp F12     &none         &tog 1  &bootloader   &trans                  &mmv MOVE_DOWN                   &bootloader  &kp C_BRI_DEC     &kp C_BRIGHTNESS_INC  &none         &none         &tog 5      
+&kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp F11  &kp F12     &none         &tog QWERTY  &bootloader   &trans                  &mmv MOVE_DOWN                   &bootloader  &kp C_BRI_DEC     &kp C_BRIGHTNESS_INC  &none         &none         &tog SYS      
                                       &kp LEFT_GUI    &trans       &trans                                                              &none     &none        &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_FAST_FORWARD C_REWIND>;
@@ -169,8 +174,8 @@
             bindings = <
 &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SPD  &rgb_ug RGB_SPI  &none                              &mmv MOVE_UP                        &none           &none  &none   &none  &none  &bt BT_CLR
 &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_EFR  &rgb_ug RGB_EFF  &none              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &none           &none  &none   &none  &none  &none
-&none   &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &none            &none            &none  &kp RGB_TOG                 &mmv MOVE_DOWN                      &bt BT_CLR_ALL  &none  &none   &none  &to 0  &none
-                                          &trans           &mo 3            &trans                                                                 &trans          &mo 2  &trans
+&none   &rgb_ug RGB_OFF  &rgb_ug RGB_ON   &none            &none            &none  &kp RGB_TOG                 &mmv MOVE_DOWN                      &bt BT_CLR_ALL  &none  &none   &none  &to DVRK  &none
+                                          &trans           &mo SYM            &trans                                                                 &trans          &mo NUM  &trans
             >;
             sensor-bindings = <&scroll_encoder>;
         };
