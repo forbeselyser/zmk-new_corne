@@ -50,7 +50,6 @@
 
         hml: hml {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_LEFT";
 
             flavor = "balanced";
             tapping-term-ms = <280>;
@@ -63,7 +62,6 @@
 
         hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_RIGHT";
 
             flavor = "balanced";
             tapping-term-ms = <280>;
@@ -161,7 +159,7 @@
 &kp C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &kp F11  &kp F12     &none         &tog 1  &bootloader   &trans                  &mmv MOVE_DOWN                   &bootloader  &kp C_BRI_DEC     &kp C_BRIGHTNESS_INC  &none         &none         &tog 5      
                                       &kp LEFT_GUI    &trans       &trans                                                              &none     &none        &kp RALT
             >;
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp C_FAST_FORWARD C_REWIND>;
         };
 
         system_layer {
