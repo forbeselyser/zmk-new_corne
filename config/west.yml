@@ -6,13 +6,15 @@ manifest:
       # See:
       # - https://zmk.dev/docs/features/modules
       # - https://docs.zephyrproject.org/3.5.0/develop/west/manifest.html#projects
+    - name: gpeye
+      url-base: https://github.com/GPeye
   projects:
-    - name: eyelash_corne
-      url: https://github.com/a741725193/zmk-new_corne
-      revision: main
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import: app/west.yml
+      import: app/west.yml 
+    - name: urchin-peripheral-animation
+      remote: gpeye
+      revision: main
   self:
     path: config
