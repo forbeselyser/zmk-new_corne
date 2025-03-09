@@ -31,7 +31,7 @@
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
         
-        hml: homerow_mods_left {
+        hml: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
 
@@ -44,7 +44,7 @@
             hold-trigger-on-release;
         };
 
-        hmr: homerow_mods_right {
+        hmr: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_RIGHT";
 
