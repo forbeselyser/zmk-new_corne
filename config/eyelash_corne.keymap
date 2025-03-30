@@ -51,14 +51,6 @@
 #define SYS 6
 
 / {
-    // Make sure caps_word is defined
-    caps_word: caps_word {
-        compatible = "zmk,behavior-caps-word";
-        label = "CAPS_WORD";
-        #binding-cells = <0>;
-        continue-list = <UNDERSCORE MINUS>;
-    };
-
     behaviors {
         td0: td0 {
             compatible = "zmk,behavior-tap-dance";
@@ -66,6 +58,15 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+        // Make sure caps_word is defined
+        caps_word: caps_word {
+            compatible = "zmk,behavior-caps-word";
+            label = "CAPS_WORD";
+            #binding-cells = <0>;
+            continue-list = <UNDERSCORE MINUS>;
+        };
+
 
         td_shift: td_shift {
             compatible = "zmk,behavior-tap-dance";
