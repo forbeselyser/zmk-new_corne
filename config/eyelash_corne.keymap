@@ -53,9 +53,7 @@
 / {
     num_word: num_word {
         compatible = "zmk,behavior-caps-word";
-        label = "NUM_WORD";
         #binding-cells = <0>;
-        layers = <NUM>;
         continue-list = <
             BACKSPACE DELETE DOT COMMA
             KP_MULTIPLY KP_DIVIDE KP_PLUS KP_MINUS
@@ -105,7 +103,6 @@
         
         td_num: tap_dance_num {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_NUM";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&mo NUM>, <&num_word>;
