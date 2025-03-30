@@ -51,29 +51,32 @@
 #define SYS 6
 
 / {
+    // Make sure caps_word is defined
+    caps_word: caps_word {
+        compatible = "zmk,behavior-caps-word";
+        label = "CAPS_WORD";
+        #binding-cells = <0>;
+        continue-list = <UNDERSCORE MINUS>;
+    };
+
+    num_word: num_word {
+        compatible = "zmk,behavior-caps-word";
+        label = "NUM_WORD";
+        #binding-cells = <0>;
+        layers = <NUM>;
+        continue-list = <
+            BACKSPACE DELETE DOT COMMA
+            KP_MULTIPLY KP_DIVIDE KP_PLUS KP_MINUS
+            N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
+        >;
+    };
+
     behaviors {
         td0: td0 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Shift/Caps Lock Tap Dance";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
-        };
-
-        // Make sure caps_word is defined
-        caps_word: caps_word {
-            compatible = "zmk,behavior-caps-word";
-            label = "CAPS_WORD";
-            #binding-cells = <0>;
-            continue-list = <UNDERSCORE MINUS>;
-        };
-
-
-        td_shift: td_shift {
-            compatible = "zmk,behavior-tap-dance";
-            display-name = "Sticky Shift/Caps Word Tap Dance";
-            #binding-cells = <0>;
-            bindings = <&sk RSHIFT>, <&caps_word>;
-            tapping-term-ms = <200>;
         };
 
         hml: hml {
@@ -100,16 +103,12 @@
             hold-trigger-on-release;
         };
 
-        num_word: num_word {
-            compatible = "zmk,behavior-caps-word";
-            label = "NUM_WORD";
+        td_shift: td_shift {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Sticky Shift/Caps Word Tap Dance";
             #binding-cells = <0>;
-            layers = <NUM>;
-            continue-list = <
-                BACKSPACE DELETE DOT COMMA
-                KP_MULTIPLY KP_DIVIDE KP_PLUS KP_MINUS
-                N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
-            >;
+            bindings = <&sk RSHIFT>, <&caps_word>;
+            tapping-term-ms = <200>;
         };
         
         td_num: tap_dance_num {
@@ -227,9 +226,9 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &kp LA(LEFT)   &kp UP      &kp LA(RIGHT)  &trans      &kp LA(DEL)
-&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp PG_DOWN &kp LEFT    &kp DOWN    &kp RIGHT     &trans      &trans
-&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &trans      &kp LG(C)   &kp LG(V)     &trans      &trans
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &kp LA(LEFT)    &kp UP      &kp LA(RIGHT)  &trans      &kp LA(DEL)
+&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp PG_DN   &kp LEFT        &kp DOWN    &kp RIGHT     &trans      &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &trans          &kp LG(C)   &kp LG(V)     &trans      &trans
                                 &trans      &trans      &trans                                                                  &trans      &trans      &trans
             >;
             sensor-bindings = <&scroll_encoder>;
