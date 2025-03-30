@@ -51,14 +51,6 @@
 #define SYS 6
 
 / {
-    // Make sure caps_word is defined
-    caps_word: caps_word {
-        compatible = "zmk,behavior-caps-word";
-        label = "CAPS_WORD";
-        #binding-cells = <0>;
-        continue-list = <UNDERSCORE MINUS>;
-    };
-
     num_word: num_word {
         compatible = "zmk,behavior-caps-word";
         label = "NUM_WORD";
