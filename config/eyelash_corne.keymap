@@ -27,6 +27,7 @@
     trigger-period-ms = <16>;
 };
 
+// keyboard layout key positions
 // 34 - rotator press
 // 6 19 20 21  35 - cursor movement
 // 
@@ -34,6 +35,8 @@
 // 13  14  15  16  17  18      19  20  21      22  23  24  25  26  27
 // 28  29  30  31  32  33  34      35          36  37  38  39  40  41
 //             42  43  44                      45  46  47
+// homerow left 17 16 15 14  (index - pinky)
+// homerow right 23 24 25 26 (index - pinky)
 
 #define KEYS_L 0 1 2 3 4 5 13 14 15 16 17 18 28 29 30 31 32 33
 #define KEYS_R 7 8 9 10 11 12 22 23 24 25 26 27 36 37 38 39 40 41
@@ -42,17 +45,34 @@
 #define DVRK 0
 #define QWERTY 1
 #define NUM 2
-#define SYM 3
-#define FN 4
-#define SYS 5
+#define NAV 3
+#define SYM 4
+#define FN 5
+#define SYS 6
 
 / {
+    // Make sure caps_word is defined
+    caps_word: caps_word {
+        compatible = "zmk,behavior-caps-word";
+        label = "CAPS_WORD";
+        #binding-cells = <0>;
+        continue-list = <UNDERSCORE MINUS>;
+    };
+
     behaviors {
         td0: td0 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Shift/Caps Lock Tap Dance";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
+        };
+
+        td_shift: td_shift {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Sticky Shift/Caps Word Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&sk RSHIFT>, <&caps_word>;
+            tapping-term-ms = <200>;
         };
 
         hml: hml {
@@ -78,6 +98,26 @@
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
         };
+
+        num_word: num_word {
+            compatible = "zmk,behavior-caps-word";
+            label = "NUM_WORD";
+            #binding-cells = <0>;
+            layers = <NUM>;
+            continue-list = <
+                BACKSPACE DELETE DOT COMMA
+                KP_MULTIPLY KP_DIVIDE KP_PLUS KP_MINUS
+                N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
+            >;
+        };
+        
+        td_num: tap_dance_num {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_NUM";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo NUM>, <&num_word>;
+        };
     };
 
     conditional_layers {
@@ -95,6 +135,42 @@
         esc {
             bindings = <&kp ESCAPE>;
             key-positions = <1 2>;
+        };
+        
+        square_brackets_open {
+            bindings = <&kp LBKT>;
+            key-positions = <8 9>; // Right index and middle fingers on top row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
+        };
+
+        square_brackets_close {
+            bindings = <&kp RBKT>;
+            key-positions = <9 10>; // Right middle and ring fingers on top row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
+        };
+        
+        curly_brackets_open {
+            bindings = <&kp LBRC>;
+            key-positions = <23 24>; // Right index and middle fingers on home row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
+        };
+
+        curly_brackets_close {
+            bindings = <&kp RBRC>;
+            key-positions = <24 25>; // Right middle and ring fingers on home row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
+        };
+        
+        parentheses_open {
+            bindings = <&kp LPAR>;
+            key-positions = <37 38>; // Right index and middle fingers on bottom row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
+        };
+
+        parentheses_close {
+            bindings = <&kp RPAR>;
+            key-positions = <38 39>; // Right middle and ring fingers on bottom row
+            layers = <0 1>; // Works on both DVRK and QWERTY layers
         };
     };
 
@@ -117,10 +193,10 @@
         default_layer {
             display-name = "DVRK";
             bindings = <
-&kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F  &kp G           &kp C           &kp R           &kp L           &kp BSPC
-&kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D  &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
-&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp RSHIFT
-                            &kp LGUI    &mo SYM     &kp SPACE                                                                &kp ENTER  &mo NUM   &kp RALT
+&kp TAB     &kp SEMI    &kp COMMA   &kp DOT     &kp P         &kp Y                              &kp LG(CARET)                  &kp F         &kp G         &kp C         &kp R         &kp L         &kp BSPC
+&kp LCTRL   &hml LCTRL A &hml LALT O &hml LGUI E &hml LSHIFT U &kp I                    &kp LS(LG(TAB)) &kp ENTER &kp LG(TAB)   &kp D         &hmr RSHFT H  &hmr RGUI T   &hmr RALT N   &hmr RCTRL S  &kp MINUS
+&td0        &kp SQT     &kp Q       &kp J       &kp K         &kp X       &kp C_MUTE             &kp LS(LG(CARET))              &kp B         &kp M         &kp W         &kp V         &kp Z         &kp RSHIFT
+                        &kp NAV      &td_num     &kp SPACE                                                                      &kp ENTER     &mo SYM       &td_shift
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -131,7 +207,7 @@
 &trans  &kp Q  &kp W      &kp E     &kp R  &kp T                              &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &trans
 &trans  &kp A  &kp S      &kp D     &kp F  &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &trans
 &trans  &kp Z  &kp X      &kp C     &kp V  &kp B       &kp C_MUTE             &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &trans
-        &kp LGUI    &mo SYM       &kp SPACE                                                                &kp ENTER  &mo NUM   &kp RALT
+                    &kp NAV    &mo NUM     &kp SPACE                                                             &kp ENTER  &mo SYM   &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -139,10 +215,21 @@
         number_layer {
             display-name = "NUM";
             bindings = <
-&trans  &kp N1      &kp N2      &kp N3  &kp N4  &kp N5                              &mmv MOVE_UP                        &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &trans
-&trans  &kp N6      &kp N7      &kp N8  &kp N9  &kp N0              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &trans      &trans      &trans  &trans  &kp KP_DOT  &kp C_MUTE              &mmv MOVE_DOWN                      &trans    &trans    &trans  &trans     &trans  &trans
-                                &trans  &trans  &trans                                                                  &trans    &trans    &trans
+&trans  &kp KP_PLUS  &kp KP_MINUS  &kp KP_DIVIDE  &kp KP_MULTIPLY  &trans                              &mmv MOVE_UP                        &kp EQUAL  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+&trans  &kp LCTRL    &kp LALT      &kp LGUI       &kp LSHIFT       &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &trans     &kp N4  &kp N5  &kp N6  &trans  &trans
+&trans  &trans       &trans        &trans         &trans           &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &kp DOT    &kp N1  &kp N2  &kp N3  &kp COMMA &trans
+                     &trans        &trans         &trans                                                                  &trans     &trans  &trans
+            >;
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        nav_layer {
+            display-name = "NAV";
+            bindings = <
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &LA(LEFT)   &kp UP      &kp LA(RIGHT)  &trans      &kp LA(DEL)
+&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp PG_DOWN &kp LEFT    &kp DOWN    &kp RIGHT     &trans      &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &trans      &kp LG(C)   &kp LG(V)     &trans      &trans
+                                &trans      &trans      &trans                                                                  &trans      &trans      &trans
             >;
             sensor-bindings = <&scroll_encoder>;
         };
@@ -150,9 +237,9 @@
         symbol_layer {
             display-name = "SYM";
             bindings = <
-&kp TILDE  &kp PLUS         &kp LBKT  &kp LBRC  &kp LPAR     &kp AMPS                           &mmv MOVE_UP                     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH       &trans
-&trans     &kp EXCLAMATION  &kp AT    &kp HASH  &kp PERCENT  &kp PIPE           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp PIPE   &kp CARET     &kp GRAVE  &kp ASTERISK  &kp DOLLAR      &kp MINUS
-&trans     &trans           &trans    &none     &trans       &trans     &trans                  &mmv MOVE_DOWN                   &trans     &kp QUESTION  &trans     &kp BSLH      &kp UNDERSCORE  &trans
+&kp TILDE  &kp EXCLAMATION  &trans    &trans    &kp AMPS     &trans                             &mmv MOVE_UP                     &kp EQUAL  &kp PIPE      &trans     &tras          &kp SLASH       &kp BSLH
+&trans     &kp PLUS         &kp AT    &kp HASH  &kp PERCENT  &trans             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &trans     &kp CARET     &kp GRAVE  &kp ASTERISK   &kp DOLLAR      &kp UNDERSCORE
+&trans     &trans           &trans    &trans     &trans      &trans     &trans                  &mmv MOVE_DOWN                   &trans     &kp QUESTION  &trans     &trans         &trans          &trans
                                       &trans    &trans       &trans                                                              &trans     &trans        &trans
             >;
             sensor-bindings = <&scroll_encoder>;
@@ -181,4 +268,5 @@
         };
 
     };
+
 };
