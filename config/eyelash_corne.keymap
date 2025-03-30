@@ -237,7 +237,7 @@
         symbol_layer {
             display-name = "SYM";
             bindings = <
-&kp TILDE  &kp EXCLAMATION  &trans    &trans    &kp AMPS     &trans                             &mmv MOVE_UP                     &kp EQUAL  &kp PIPE      &trans     &tras          &kp SLASH       &kp BSLH
+&kp TILDE  &kp EXCLAMATION  &trans    &trans    &kp AMPS     &trans                             &mmv MOVE_UP                     &kp EQUAL  &kp PIPE      &trans     &trans          &kp SLASH       &kp BSLH
 &trans     &kp PLUS         &kp AT    &kp HASH  &kp PERCENT  &trans             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &trans     &kp CARET     &kp GRAVE  &kp ASTERISK   &kp DOLLAR      &kp UNDERSCORE
 &trans     &trans           &trans    &trans     &trans      &trans     &trans                  &mmv MOVE_DOWN                   &trans     &kp QUESTION  &trans     &trans         &trans          &trans
                                       &trans    &trans       &trans                                                              &trans     &trans        &trans

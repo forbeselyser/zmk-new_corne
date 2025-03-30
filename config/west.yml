@@ -18,6 +18,6 @@ manifest:
       import: app/west.yml 
     - name: nice-view-animation
       remote: niceview
-      revision: master
+      revision: main
   self:
     path: config
