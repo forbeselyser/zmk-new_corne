@@ -226,7 +226,7 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &LA(LEFT)   &kp UP      &kp LA(RIGHT)  &trans      &kp LA(DEL)
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &kp LA(LEFT)   &kp UP      &kp LA(RIGHT)  &trans      &kp LA(DEL)
 &trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp PG_DOWN &kp LEFT    &kp DOWN    &kp RIGHT     &trans      &trans
 &trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &trans      &kp LG(C)   &kp LG(V)     &trans      &trans
                                 &trans      &trans      &trans                                                                  &trans      &trans      &trans
