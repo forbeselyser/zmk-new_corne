@@ -8,6 +8,8 @@ manifest:
       # - https://docs.zephyrproject.org/3.5.0/develop/west/manifest.html#projects
     # - name: gpeye
     #   url-base: https://github.com/GPeye
+    - name :  niceview
+      url-base : https://github.com/forbeselyser
   projects:
     - name: eyelash_corne
       url: https://github.com/a741725193/zmk-new_corne
@@ -15,7 +17,10 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: v0.2
-      import: app/west.yml 
+      import: app/west.yml
+    - name :  nice-view -animation
+      remote :  niceview
+      revision :  main
     # - name: urchin-peripheral-animation
     #   remote: gpeye
     #   revision: main
