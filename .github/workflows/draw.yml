@@ -1,5 +1,5 @@
 name: Draw Keymap
-on:
+# on:
   # workflow_dispatch:
   # push:
   #   paths:
