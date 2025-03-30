@@ -58,7 +58,7 @@
         hml: hml {
             compatible = "zmk,behavior-hold-tap";
             flavor = "balanced";
-            tapping-term-ms = <250>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <116>;
             #binding-cells = <2>;
@@ -70,7 +70,7 @@
         hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
             flavor = "balanced";
-            tapping-term-ms = <250>;
+            tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <116>;
             #binding-cells = <2>;
