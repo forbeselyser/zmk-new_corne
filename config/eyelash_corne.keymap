@@ -57,10 +57,10 @@
 
         hml: hml {
             compatible = "zmk,behavior-hold-tap";
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <116>;
+            require-prior-idle-ms = <100>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_R THUMBS>;
@@ -69,14 +69,22 @@
 
         hmr: hmr {
             compatible = "zmk,behavior-hold-tap";
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
-            require-prior-idle-ms = <116>;
+            require-prior-idle-ms = <100>;
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release;
+        };
+
+        td_shift: td_shift {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Sticky Shift/Caps Word Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&kp ENTER>, <&caps_word>;
+            tapping-term-ms = <200>;
         };
     };
 
@@ -96,6 +104,7 @@
             bindings = <&kp ESCAPE>;
             key-positions = <1 2>;
         };
+
     };
 
     rgb_encoder: rgb_encoder {
@@ -120,7 +129,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F  &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D  &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp RSHIFT
-                            &kp LGUI    &mo SYM     &kp SPACE                                                                &kp ENTER  &mo NUM   &kp RALT
+                            &kp LGUI    &mo SYM     &mt LCTRL SPACE                                                                 &mt RSHFT td_shift   &mo NUM   &kp RALT
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -150,8 +159,8 @@
         symbol_layer {
             display-name = "SYM";
             bindings = <
-&kp TILDE  &kp PLUS         &kp LBKT  &kp LBRC  &kp LPAR     &kp AMPS                           &mmv MOVE_UP                     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH       &trans
-&trans     &kp EXCLAMATION  &kp AT    &kp HASH  &kp PERCENT  &kp PIPE           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp PIPE   &kp CARET     &kp GRAVE  &kp ASTERISK  &kp DOLLAR      &kp MINUS
+&kp TILDE  &kp EXCLAMATION  &kp LBKT  &kp LBRC  &kp LPAR     &kp AMPS                           &mmv MOVE_UP                     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH       &trans
+&trans     &kp PLUS         &kp AT    &kp HASH  &kp PERCENT  &kp PIPE           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp PIPE   &kp CARET     &kp GRAVE  &kp ASTERISK  &kp DOLLAR      &kp MINUS
 &trans     &trans           &trans    &none     &trans       &trans     &trans                  &mmv MOVE_DOWN                   &trans     &kp QUESTION  &trans     &kp BSLH      &kp UNDERSCORE  &trans
                                       &trans    &trans       &trans                                                              &trans     &trans        &trans
             >;
