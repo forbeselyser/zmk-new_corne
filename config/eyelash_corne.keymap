@@ -159,7 +159,7 @@
         symbol_layer {
             display-name = "SYM";
             bindings = <
-&kp TILDE  &kp EXCLAMATION  &kp LBKT     &kp LBRC       &kp LPAR             &kp AMPS                           &mmv MOVE_UP                     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH    &BSLH
+&kp TILDE  &kp EXCLAMATION  &kp LBKT     &kp LBRC       &kp LPAR             &kp AMPS                           &mmv MOVE_UP                     &kp EQUAL  &kp RPAR      &kp RBRC   &kp RBKT      &kp SLASH    &kp BSLH
 &trans     &hml LCTRL PLUS  &hml LALT AT &hml LGUI HASH &hml LSHIFT PERCENT  &kp PIPE           &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp PIPE   &kp CARET     &kp GRAVE  &kp ASTERISK  &kp DOLLAR   &kp UNDERSCORE
 &trans     &trans           &trans       &trans         &trans               &trans     &trans                  &mmv MOVE_DOWN                   &trans     &kp QUESTION  &trans     &trans        &trans       &trans
                                       &trans    &trans       &trans                                                              &trans     &trans        &trans
