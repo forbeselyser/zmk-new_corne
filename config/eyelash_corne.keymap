@@ -105,6 +105,16 @@
             then-layer = <FN>;
         };
 
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <1 2>;
+        };
+
         square_brackets_open {
             bindings = <&kp LBKT>;
             key-positions = <3 4>; // Right index and middle fingers on top row
@@ -127,16 +137,6 @@
             bindings = <&kp RBRC>;
             key-positions = <9 10>; // Right middle and ring fingers on home row
             layers = <DVRK QWERTY NUM>; 
-        };
-
-    };
-
-    combos {
-        compatible = "zmk,combos";
-
-        esc {
-            bindings = <&kp ESCAPE>;
-            key-positions = <1 2>;
         };
 
     };
