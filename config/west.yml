@@ -20,7 +20,7 @@ manifest:
       import: app/west.yml
     - name: nice-view-animation
       remote: niceview
-      revision: main
+      revision: slime
     # - name: urchin-peripheral-animation
     #   remote: gpeye
     #   revision: main
