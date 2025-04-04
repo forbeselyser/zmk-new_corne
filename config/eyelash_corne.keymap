@@ -59,7 +59,7 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <150>;
+            tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
             display-name = "Mod-Tap";
         };
@@ -104,7 +104,6 @@
             if-layers = <NUM SYM>;
             then-layer = <FN>;
         };
-
     };
 
     combos {
@@ -113,30 +112,6 @@
         esc {
             bindings = <&kp ESCAPE>;
             key-positions = <1 2>;
-        };
-
-        square_brackets_open {
-            bindings = <&kp LBKT>;
-            key-positions = <3 4>; // Right index and middle fingers on top row
-            layers = <DVRK QWERTY NUM>; 
-        };
-
-        square_brackets_close {
-            bindings = <&kp RBKT>;
-            key-positions = <8 9>; // Right middle and ring fingers on top row
-            layers = <DVRK QWERTY NUM>; 
-        };
-
-        curly_brackets_open {
-            bindings = <&kp LBRC>;
-            key-positions = <2 3>; // Right index and middle fingers on home row
-            layers = <DVRK QWERTY NUM>; 
-        };
-
-        curly_brackets_close {
-            bindings = <&kp RBRC>;
-            key-positions = <9 10>; // Right middle and ring fingers on home row
-            layers = <DVRK QWERTY NUM>; 
         };
 
     };
