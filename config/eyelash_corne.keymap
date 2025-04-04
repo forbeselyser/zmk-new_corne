@@ -117,7 +117,7 @@
             compatible = "zmk,behavior-tap-dance";
             display-name = "Enter/Nav Word Tap Dance";
             #binding-cells = <0>;
-            bindings = <&kp enter>, <&nav_word NAV>;
+            bindings = <&kp ENTER>, <&nav_word NAV>;
             tapping-term-ms = <200>;
         };
 
