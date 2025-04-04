@@ -40,12 +40,13 @@
 #define KEYS_R 7 8 9 10 11 12 22 23 24 25 26 27 36 37 38 39 40 41
 #define THUMBS 42 43 44 45 46 47
 
-#define DVRK 0
-#define QWERTY 1
-#define NUM 2
-#define SYM 3
-#define FN 4
-#define SYS 5
+#define DVRK    0
+#define QWERTY  1
+#define NUM     2
+#define NAV     3
+#define SYM     4
+#define FN      5
+#define SYS     6
 
 / {
     behaviors {
@@ -108,7 +109,7 @@
             compatible = "zmk,behavior-tap-dance";
             display-name = "Num/Nav Word Tap Dance";
             #binding-cells = <0>;
-            bindings = <&num_word>, <&nav_word>;
+            bindings = <&num_word NUM>, <&nav_word NAV>;
             tapping-term-ms = <200>;
         };
     };
@@ -153,8 +154,8 @@
             bindings = <
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F  &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D  &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
-&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp RSHIFT
-                            &td_shift   &sl SYM    &cmt LCTRL SPACE                                                          &cmt RSHFT ENTER       &sl NUM     &kp RALT
+&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp ENTER
+                            &sl NUM   &sl SYM    &cmt LCTRL SPACE                                                          &td_shift       &td_num_nav     &kp K_CANCEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -174,8 +175,19 @@
             display-name = "NUM";
             bindings = <
 &trans  &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                              &mmv MOVE_UP                        &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &trans
-&trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &kp N0              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &trans    &trans    &trans  &trans     &trans  &trans
 &trans  &trans      &trans      &trans      &trans      &kp KP_DOT  &kp C_MUTE              &mmv MOVE_DOWN                      &trans    &trans    &trans  &trans     &trans  &trans
+                                &trans      &trans      &trans                                                                  &trans    &trans    &trans
+            >;
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        nav_layer {
+            display-name = "NAV";
+            bindings = <
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &trans    &trans  &trans     &trans  &trans
+&trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &kp KP_DOT  &kp C_MUTE              &mmv MOVE_DOWN                      &kp PG_DN   &trans    &trans  &trans     &trans  &trans
                                 &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;
