@@ -195,7 +195,7 @@
             bindings = <
 &trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &trans    &trans  &trans     &trans  &trans
 &trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &kp PG_DN   &LA(LEFT)    &LA(RIGHT)  &trans     &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &kp PG_DN   &kp LA(LEFT)    &kp LA(RIGHT)  &trans     &trans  &trans
                                 &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;
