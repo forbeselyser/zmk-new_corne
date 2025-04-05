@@ -66,6 +66,15 @@
             display-name = "Mod-Tap";
         };
 
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
+
         hml: hml {
             compatible = "zmk,behavior-hold-tap";
             flavor = "tap-preferred";
@@ -94,7 +103,7 @@
             compatible = "zmk,behavior-tap-dance";
             display-name = "Sticky Shift/Caps Word Tap Dance";
             #binding-cells = <0>;
-            bindings = <&sk RSHIFT>, <&caps_word>;
+            bindings = <&skq RSHIFT>, <&caps_word>;
             tapping-term-ms = <200>;
         };
 
@@ -168,10 +177,10 @@
         default_layer {
             display-name = "DVRK";
             bindings = <
-&kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F  &kp G           &kp C           &kp R           &kp L           &kp BSPC
-&kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D  &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
-&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B  &kp M           &kp W           &kp V           &kp Z           &kp ENTER
-                            &td_num   &sl SYM    &cmt LCTRL SPACE                                                          &td_enter_nav    &td_shift     &kp K_CANCEL
+&kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
+&kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
+&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &kp ENTER
+                            &td_num   &sl SYM    &cmt LCTRL SPACE                                                            &cmt ENTER NAV &td_shift     &kp K_CANCEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -203,7 +212,7 @@
             bindings = <
 &trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &trans    &trans  &trans     &trans  &trans
 &trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT    &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &trans      &trans      &trans      &trans      &kp KP_DOT  &kp C_MUTE              &mmv MOVE_DOWN                      &kp PG_DN   &trans    &trans  &trans     &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &kp PG_DN   &LA(LEFT)    &LA(RIGHT)  &trans     &trans  &trans
                                 &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;
@@ -244,3 +253,7 @@
 
     };
 };
+
+04-2025	3-Apr	Subway and citirizine		84.00	Expense	Anne																						
+51
+	04-2025	3-Apr	100	wet market money	100.00	Expense	Anne	
