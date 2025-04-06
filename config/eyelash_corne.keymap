@@ -122,13 +122,15 @@
             tapping-term-ms = <200>;
         };
 
-        td_num: td_num {
-            compatible = "zmk,behavior-tap-dance";
-            display-name = "Num/Nav Word Tap Dance";
+        nlt: num_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
-            bindings = <&sl NUM>, <&num_word NUM>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
+            bindings = <&mo NUM>, <&num_word NUM>;
+            display-name = "Num-Layer-Tap";
         };
+
     };
 
     combos {
@@ -163,7 +165,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
-                            &td_num   &sl SYM    &cmt LCTRL SPACE                                                            &lt NAV ENTER &td_shift     &kp K_CANCEL
+                            &nlt        &sl SYM   &cmt LCTRL SPACE                                                            &td_shift      &lt NAV ENTER  &kp K_CANCEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -182,10 +184,10 @@
         number_layer {
             display-name = "NUM";
             bindings = <
-&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &trans    &kp N7    &kp N8      &kp N9     &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &trans    &kp N7    &kp N8      &kp N9     &kp N0  &trans
 &trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &trans    &kp N4    &kp N5      &kp N6     &trans  &trans
 &trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE              &mmv MOVE_DOWN                          &trans    &kp N1    &kp N2      &kp N3     &trans  &trans
-                                &trans      &trans      &trans                                                                  &trans    &kp N0    &trans
+                                &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;
         };
