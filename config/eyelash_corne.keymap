@@ -124,7 +124,7 @@
 
         nlt: num_layer_tap {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&num_word>;
@@ -165,7 +165,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
-                            &nlt NUM    &sl SYM   &cmt LCTRL SPACE                                                            &td_shift      &lt NAV ENTER  &kp K_CANCEL
+                            &nlt NUM 0  &sl SYM   &cmt LCTRL SPACE                                                            &td_shift      &lt NAV ENTER  &kp K_CANCEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
