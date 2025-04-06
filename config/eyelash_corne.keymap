@@ -125,9 +125,9 @@
         nlt: num_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            bindings = <&mo>, <&num_word>;
+            bindings = <&mo>, <&num_word NUM>;
             display-name = "Num-Layer-Tap";
         };
 
