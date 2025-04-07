@@ -50,13 +50,6 @@
 
 / {
     behaviors {
-        td0: td0 {
-            compatible = "zmk,behavior-tap-dance";
-            display-name = "Shift/Caps Lock Tap Dance";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
-        };
-
         cmt: mod_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -164,7 +157,7 @@
             bindings = <
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
-&td0        &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
+&mo FN      &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
                             &nlt NUM NUM  &sl SYM   &cmt LCTRL SPACE                                                           &lt NAV ENTER  &td_shift      &kp K_CANCEL
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
