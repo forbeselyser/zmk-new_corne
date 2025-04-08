@@ -97,7 +97,7 @@
             display-name = "Sticky Shift/Caps Word Tap Dance";
             #binding-cells = <0>;
             bindings = <&skq RSHIFT>, <&caps_word>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
         };
 
         nav_word: nav_word {
@@ -158,7 +158,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &mo FN      &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
-                            &nlt NUM NUM  &sl SYM   &cmt LCTRL SPACE                                                           &lt NAV ENTER  &td_shift      &kp K_CANCEL
+                            &kp K_CANCEL &sl SYM   &cmt LCTRL SPACE                                                          &lt NAV ENTER  &td_shift       &sl NUM
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -177,10 +177,10 @@
         number_layer {
             display-name = "NUM";
             bindings = <
-&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &trans    &kp KP_N7    &kp KP_N8      &kp KP_N9     &kp KP_N0  &trans
-&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &trans    &kp KP_N4    &kp KP_N5      &kp KP_N6     &trans  &trans
-&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE              &mmv MOVE_DOWN                          &trans    &kp KP_N1    &kp KP_N2      &kp KP_N3     &trans  &trans
-                                &trans      &trans      &trans                                                                  &trans    &trans    &trans
+&trans  &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                              &mmv MOVE_UP                        &kp N6      &kp N7      &kp N8       &kp N9        &kp N0      &trans
+&trans  &sk LCTRL   &sk LALT    &sk LGUI    &sk LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &trans      &trans      &trans       &trans        &trans      &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE              &mmv MOVE_DOWN                          &trans      &trans      &trans       &trans        &trans      &trans
+                                &trans      &trans      &trans                                                                  &trans      &trans      &trans
             >;
             sensor-bindings = <&scroll_encoder>;
         };
@@ -188,9 +188,9 @@
         nav_layer {
             display-name = "NAV";
             bindings = <
-&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &kp PG_UP   &trans          &kp LG(C)       &trans      &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &trans      &kp PG_UP       &kp LG(C)       &kp PG_DN   &trans  &trans
 &trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT    &kp DOWN        &kp UP          &kp RIGHT   &trans  &trans
-&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &kp PG_DN   &kp LA(LEFT)    &kp LA(RIGHT)   &kp LG(V)   &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &kp LA(LEFT)    &kp LA(RIGHT)   &kp LG(V)   &trans  &trans
                                 &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;

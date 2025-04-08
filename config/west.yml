@@ -23,7 +23,7 @@ manifest:
       revision: v0.2
     - name: nice-view-animation
       remote: niceview
-      revision: slime
+      revision: main
     # - name: urchin-peripheral-animation
     #   remote: gpeye
     #   revision: main
