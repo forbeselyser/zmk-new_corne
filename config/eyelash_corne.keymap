@@ -158,7 +158,7 @@
 &kp TAB     &kp SEMI        &kp COMMA   &kp DOT     &kp P           &kp Y                              &kp UP                &kp F          &kp G           &kp C           &kp R           &kp L           &kp BSPC
 &kp LCTRL   &hml LCTRL A    &hml LALT O &hml LGUI E &hml LSHIFT U   &kp I                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp D          &hmr RSHFT H    &hmr RGUI T     &hmr RALT N     &hmr RCTRL S    &kp MINUS
 &mo FN      &kp SQT         &kp Q       &kp J       &kp K           &kp X       &kp C_MUTE             &kp DOWN              &kp B          &kp M           &kp W           &kp V           &kp Z           &mo FN
-                            &kp K_CANCEL &sl SYM   &cmt LCTRL SPACE                                                          &lt NAV ENTER  &td_shift       &sl NUM
+                                        &kp K_CANCEL &td_shift      &cmt LCTRL SPACE                                                        &lt NAV ENTER   &sl SYM         &sl NUM
             >;
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
@@ -190,7 +190,7 @@
             bindings = <
 &trans  &trans      &trans      &trans      &trans      &trans                              &mmv MOVE_UP                        &trans      &kp PG_UP       &kp LG(C)       &kp PG_DN   &trans  &trans
 &trans  &kp LCTRL   &kp LALT    &kp LGUI    &kp LSHIFT  &trans              &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT     &kp LEFT    &kp DOWN        &kp UP          &kp RIGHT   &trans  &trans
-&trans  &trans      &trans      &trans      &trans      &trans  &kp C_MUTE                  &mmv MOVE_DOWN                      &trans      &kp LA(LEFT)    &kp LA(RIGHT)   &kp LG(V)   &trans  &trans
+&trans  &trans      &trans      &trans      &trans      &kp LA(X)  &kp C_MUTE               &mmv MOVE_DOWN                      &kp LA(LEFT)      &trans    &kp LA(RIGHT)   &kp LG(V)   &trans  &trans
                                 &trans      &trans      &trans                                                                  &trans    &trans    &trans
             >;
             sensor-bindings = <&scroll_encoder>;
